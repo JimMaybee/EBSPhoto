@@ -6,13 +6,17 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "es6-promise": "^4.2.8",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-qr-code": "^1.0.2",
     "react-qr-reader": "^2.2.1",
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "HTTPS=true react-scripts start",
+    "prestart": "cp -f ~/.localhost-ssl/localhost.crt ./node_modules/webpack-dev-server/ssl",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

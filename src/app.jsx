@@ -1,20 +1,14 @@
 import React, { useState } from "react";
-import QrReader from "react-qr-reader";
+import Reader from "./reader";
+import Photo from "./photo";
 
 function App() {
-  const [result, setResult] = useState("");
+  const [code, setCode] = useState("XAvVf5FoIS");
 
   return (
     <div>
-      <QrReader
-        delay={300}
-        onError={() => {}}
-        onScan={(data) => {
-          if (data) setResult(data);
-        }}
-        style={{ width: "100%" }}
-      />
-      <p>{result}</p>
+      <div>{code ? <Photo code={code} /> : <Reader setCode={setCode} />}</div>
+      <div>{code}</div>
     </div>
   );
 }
