@@ -8,7 +8,9 @@ function App() {
   return (
     <div>
       <div>{code ? <Photo code={code} /> : <Reader setCode={setCode} />}</div>
-      <div>{code}</div>
+      <div>
+        <button onClick={() => setCode("")}>Scan again</button>
+      </div>
     </div>
   );
 }
