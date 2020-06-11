@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import QrCode from "react-qr-code";
 
-import getFromParseDb from "./get";
+import getFromParseDb from "../modules/get";
 
 export default function Photo({ code }) {
   const [loading, setLoading] = useState(true);
