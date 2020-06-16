@@ -13,7 +13,7 @@ export default function Button({ children, active, to, style }) {
         background: "lightgrey",
         color: "black",
         textDecoration: "none",
-        fontSize: "1.2rem",
+        fontSize: "1rem",
         padding: "1rem",
         textAlign: "center",
         ...(active
