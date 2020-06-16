@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Button from "../menu-button";
+import sendToParse from "../modules/send";
 
 import cloud from "./cloud.svg";
 import camera from "./camera.svg";
 
-export default function TakePhoto() {
-  const [text, setText] = useState("");
-  const [photo, setPhoto] = useState("");
+export default function TakePhoto({ code, text, setText, photo, setPhoto }) {
   return (
     <>
       <div
@@ -16,7 +15,7 @@ export default function TakePhoto() {
       >
         {photo ? (
           <img
-            src={photo}
+            src={URL.createObjectURL(photo)}
             style={{
               height: window.innerHeight * 0.5,
             }}
@@ -50,7 +49,7 @@ export default function TakePhoto() {
               accept="image/*"
               capture
               onChange={(e) => {
-                setPhoto(URL.createObjectURL(e.target.files[0]));
+                setPhoto(e.target.files[0]);
               }}
             />
             <button
@@ -75,6 +74,11 @@ export default function TakePhoto() {
                 border: "1px solid lightgrey",
                 padding: "1rem",
               }}
+              onClick={() => {
+                if (photo.length === 0) return;
+                if (text.length === 0) return;
+                sendToParse(code, text, photo);
+              }}
             />
           </div>
           <div
@@ -98,9 +102,6 @@ export default function TakePhoto() {
       <div
         style={{
           width: window.innerWidth,
-          position: "absolute",
-          boxSizing: "border-box",
-          bottom: 0,
         }}
       >
         <Button to={"/"}>Scan QR Code</Button>

@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Reader from "./reader";
 import Photo from "./photo";
 import Button from "../menu-button";
 
-export default function ScanCode() {
-  const [code, setCode] = useState();
-
+export default function ScanCode({ code, setCode }) {
   return (
     <>
       <div
